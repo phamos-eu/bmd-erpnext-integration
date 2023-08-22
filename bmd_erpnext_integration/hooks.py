@@ -193,7 +193,8 @@ fixtures = [
     {"dt": "Custom Field", "filters": [
         [
             "name", "in", [
-                "Sales Invoice-satzart"
+                "Sales Invoice-satzart",
+				"Purchase Invoice-satzart"
             ]
         ]
     ]}
