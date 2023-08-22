@@ -188,3 +188,13 @@ user_data_fields = [
 #	"bmd_erpnext_integration.auth.validate"
 # ]
 
+
+fixtures = [
+    {"dt": "Custom Field", "filters": [
+        [
+            "name", "in", [
+                "Sales Invoice-satzart"
+            ]
+        ]
+    ]}
+]
