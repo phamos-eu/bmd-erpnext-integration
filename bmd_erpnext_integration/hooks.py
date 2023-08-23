@@ -194,7 +194,9 @@ fixtures = [
         [
             "name", "in", [
                 "Sales Invoice-satzart",
-				"Purchase Invoice-satzart"
+				"Purchase Invoice-satzart",
+				"Purchase Taxes and Charges Template-steuercode",
+				"Sales Taxes and Charges Template-steuercode"
             ]
         ]
     ]}

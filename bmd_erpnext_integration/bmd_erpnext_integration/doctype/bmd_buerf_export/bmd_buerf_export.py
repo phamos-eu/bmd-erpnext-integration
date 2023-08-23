@@ -35,6 +35,7 @@ def get_invoice_list_in_buerf_format(invoice_type, start_date, end_date, only_su
 
 		party_bank_account = frappe.db.get_value(party_name, invoice[party_name.lower()], "default_bank_account")
 		company_bank_account = frappe.db.get_value("Company", invoice["company"], "default_bank_account")
+		steuercode = frappe.db.get_value(tax_table + " Template", invoice["taxes_and_charges"], "steuercode")
 
 		# get tax rate
 		taxes = frappe.db.get_list(tax_table, filters={"parent": invoice["name"]}, fields=["rate"])
@@ -51,7 +52,7 @@ def get_invoice_list_in_buerf_format(invoice_type, start_date, end_date, only_su
 			"buchsymbol": buchsymbol,
 			"buchcode": buchcode,
 			"prozent": tax_rate,
-			"steuercode": "", # TODO 
+			"steuercode": steuercode,
 			"betrag": invoice["grand_total"],
 			"steuer": invoice["total_taxes_and_charges"],
 			"text": text,
