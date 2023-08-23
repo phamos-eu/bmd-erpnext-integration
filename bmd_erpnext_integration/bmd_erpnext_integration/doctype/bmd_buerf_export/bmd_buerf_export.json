@@ -9,6 +9,7 @@
   "invoice_type",
   "start_date",
   "end_date",
+  "only_submitted_documents",
   "get_data",
   "table_section_section",
   "bmd_buerf_export_table",
@@ -51,12 +52,18 @@
    "fieldname": "download_csv",
    "fieldtype": "Button",
    "label": "Download CSV"
+  },
+  {
+   "default": "1",
+   "fieldname": "only_submitted_documents",
+   "fieldtype": "Check",
+   "label": "Only Submitted Documents"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2023-08-22 14:43:39.474392",
+ "modified": "2023-08-23 11:11:09.640887",
  "modified_by": "Administrator",
  "module": "Bmd Erpnext Integration",
  "name": "BMD BuErf Export",

@@ -9,20 +9,20 @@ frappe.ui.form.on('BMD BuErf Export', {
 	},
 
 	get_data: function(frm) {
-		// frm.clear_table("bmd_buerf_export_table").refresh()
+		frm.clear_table("bmd_buerf_export_table")
+		frm.refresh()
 		frappe.call({
 			method: "bmd_erpnext_integration.bmd_erpnext_integration.doctype.bmd_buerf_export.bmd_buerf_export.get_invoice_list_in_buerf_format",
 			args: {
 				invoice_type: frm.doc.invoice_type, 
 				start_date: frm.doc.start_date, 
-				end_date: frm.doc.end_date
+				end_date: frm.doc.end_date,
+				only_submitted_documents: frm.doc.only_submitted_documents
 			},
 			callback: function(r) {
-				console.log(r);
 				r.message.forEach(row => {
 					var child = frm.add_child("bmd_buerf_export_table")
 					child = Object.assign(child, row)
-					console.log(child);
 				});
 				frm.fields_dict['bmd_buerf_export_table'].refresh();
 			}
@@ -31,18 +31,20 @@ frappe.ui.form.on('BMD BuErf Export', {
 
 	download_csv: function(frm){
 		// create the CSV content
-		var csvContent = "satzart,konto,gkonto,belegnr,belegdatum,buchsymbol,buchcode,prozent,steuercode,betrag,steuer,text,kost\n";
+		var csvContent = "satzart,konto,gkonto,belegnr,belegdatum,buchsymbol,buchcode,prozent,steuercode,betrag,steuer,text,kost";
+		csvContent += frm.doc.invoice_type == "Purchase Invoice" ? ",extbelegnr\n" : "\n"
+		
 		frm.doc.bmd_buerf_export_table.forEach(function(row) {
-			csvContent += `"${row.satzart}","${row.konto}","${row.gkonto}","${row.belegnr}","${row.belegdatum}","${row.buchsymbol}","${row.buchcode}","${row.prozent}","${row.steuercode}","${row.betrag}","${row.steuer}","${row.text}","${row.kost}"\n`
+			csvContent += `"${row.satzart}","${row.konto}","${row.gkonto}","${row.belegnr}","${row.belegdatum}","${row.buchsymbol}","${row.buchcode}","${row.prozent}","${row.steuercode}","${row.betrag}","${row.steuer}","${row.text}","${row.kost}"`
+			csvContent += frm.doc.invoice_type == "Purchase Invoice" ? `,"${row.extbelegnr}"\n` : "\n"
 		});
-		console.log(csvContent);
 
 		// download the file
 		var blob = new Blob([csvContent], { type: 'text/csv' });
 		var downloadUrl = URL.createObjectURL(blob);
 		var link = document.createElement('a');
 		link.href = downloadUrl;
-		link.download = 'child_table_data.csv';
+		link.download = `BMD BuErf Export - ${frm.doc.invoice_type} - ${frm.doc.start_date} - ${frm.doc.end_date}.csv`;
 		link.click();
 		URL.revokeObjectURL(downloadUrl);
 	}
