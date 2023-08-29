@@ -78,9 +78,9 @@ def get_taxes(invoice_type, invoice_name):
 			if item_wise_tax_detail[item_code][1] > 0 and item_wise_tax_detail[item_code][0] > 0:
 				result.append({
 					"rate": item_wise_tax_detail[item_code][0],
-					"tax_amount": round(item_wise_tax_detail[item_code][1], 3),
+					"tax_amount": str(round(item_wise_tax_detail[item_code][1], 3)),
 					"tax_code": get_tax_code(doc, item_code),
-					"amount": round(item_wise_tax_detail[item_code][1] / (item_wise_tax_detail[item_code][0] / 100), 3)
+					"amount": str(round(item_wise_tax_detail[item_code][1] / (item_wise_tax_detail[item_code][0] / 100), 3))
 				})
 
 	return result
