@@ -13,6 +13,7 @@ def get_invoice_list_in_buerf_format(invoice_type, start_date, end_date, only_su
 	invoices = frappe.db.get_list(invoice_type, 
 				filters=[["posting_date", ">=", start_date], 
 						 ["posting_date", "<=", end_date],
+						 ["exported", "=", 0],
 						 ["docstatus", "=", only_submitted_documents]],
 				fields=["*"])
 
