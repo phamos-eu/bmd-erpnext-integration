@@ -196,7 +196,9 @@ fixtures = [
                 "Sales Invoice-satzart",
 				"Purchase Invoice-satzart",
 				"Purchase Taxes and Charges Template-steuercode",
-				"Sales Taxes and Charges Template-steuercode"
+				"Sales Taxes and Charges Template-steuercode",
+				"Item Tax Template-bmd_integration",
+				"Item Tax Template-steuercode"
             ]
         ]
     ]}
