@@ -1,0 +1,85 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-08-22 11:10:24.930334",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "invoice_type",
+  "start_date",
+  "end_date",
+  "only_submitted_documents",
+  "get_data",
+  "table_section_section",
+  "bmd_buerf_export_table",
+  "download_csv"
+ ],
+ "fields": [
+  {
+   "fieldname": "invoice_type",
+   "fieldtype": "Select",
+   "label": "Invoice Type",
+   "options": "Sales Invoice\nPurchase Invoice"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "get_data",
+   "fieldtype": "Button",
+   "label": "Get Data"
+  },
+  {
+   "fieldname": "table_section_section",
+   "fieldtype": "Section Break",
+   "label": "Table Section"
+  },
+  {
+   "fieldname": "bmd_buerf_export_table",
+   "fieldtype": "Table",
+   "label": "BMD BuErf Export Table",
+   "options": "BMD BuErf Export Table"
+  },
+  {
+   "fieldname": "download_csv",
+   "fieldtype": "Button",
+   "label": "Download CSV"
+  },
+  {
+   "default": "1",
+   "fieldname": "only_submitted_documents",
+   "fieldtype": "Check",
+   "label": "Only Submitted Documents"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2023-08-23 11:11:09.640887",
+ "modified_by": "Administrator",
+ "module": "Bmd Erpnext Integration",
+ "name": "BMD BuErf Export",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -188,3 +188,22 @@ user_data_fields = [
 #	"bmd_erpnext_integration.auth.validate"
 # ]
 
+
+fixtures = [
+    {"dt": "Custom Field", "filters": [
+        [
+            "name", "in", [
+                "Sales Invoice-satzart",
+				"Purchase Invoice-satzart",
+				"Purchase Taxes and Charges Template-steuercode",
+				"Sales Taxes and Charges Template-steuercode",
+				"Item Tax Template-bmd_integration",
+				"Item Tax Template-steuercode",
+				"Sales Invoice-bmd_integration",
+				"Sales Invoice-exported",
+				"Purchase Invoice-bmd_integration",
+				"Purchase Invoice-exported"
+            ]
+        ]
+    ]}
+]
